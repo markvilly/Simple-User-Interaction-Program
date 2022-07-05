@@ -1,0 +1,64 @@
+#Simple User Interaction Program
+
+game_list = ['0','1','2']
+
+#1. define function that will display the list of items to be replaced by the user.
+def display_game(game_list):
+    print("Here is your current list: ")
+    print(game_list)
+
+
+#2. define function that will accept user choice and store it as an integer(we'll use it later).
+def position_choice():
+    choice = 'Wrong'
+
+    while choice not in ['0','1','2']:
+        choice = input('Pick an index position (0,1,2): ')
+
+        if choice not in ['0','1','2']:
+            print('Sorry, invalid choice my love!')
+    return int(choice)
+
+#3. define function that will replace the string of the selected index.
+
+def replacement_choice(game_list, position):
+     
+     string_replacement = input('Type in the string you want to replace at position: ')
+
+     game_list[position] = string_replacement
+
+     return game_list
+
+#4. Define function that will prompt to keep the game going in a loop or not.
+
+def gameon_choice():
+    choice = 'Wrong'
+    yesORno = ['y','n']
+
+    while choice not in yesORno:
+        choice = input('Keep going? (Y or N): ')
+
+        if choice not in yesORno:
+            print('Sorry me not understand! Pick Y or N!!!')
+    
+    if choice == 'y':
+        return True
+    else:
+        return False
+
+
+#COnnecTING the Functions to make this shit make sense.
+game_on = True
+game_list = ['0','1','2']
+while game_on:
+    position = position_choice()
+
+    game_list = replacement_choice(game_list,position)
+
+    display_game(game_list)
+
+    gameon_choice()
+
+
+
+
